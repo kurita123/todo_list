@@ -32,6 +32,13 @@
           </li>
         </ul>
 
+        @if ($errors->any())
+            <ul class="border border-red-400 bg-red-100 px-4 py-3 text-red-700 mb-10 w-4/5 m-auto">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+            </ul>
+        @endif
         <form method="post" id="todo_form">
             @csrf
             <input type="hidden" name="select_todo_id" id="select_todo_id" value="" />

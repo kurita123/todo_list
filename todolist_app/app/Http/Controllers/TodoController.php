@@ -14,6 +14,10 @@ class TodoController extends Controller
     }
 
     public function add(Request $request) {
+        $request->validate([
+            'content' => 'required|min:3|max:100'
+        ]);
+
         Todo::create([
             'content' => $request->content
         ]);
