@@ -6,6 +6,14 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <title>todo</title>
     </head>
+    <script>
+        function checkTodo(todoId) {
+            document.querySelector("#select_todo_id").value = todoId;
+
+            document.querySelector("#todo_form").action = "{{ route('todo.check') }}";
+            document.querySelector("#todo_form").submit();
+        }
+    </script>
     <body>
         <ul class="flex p-3 mb-6 bg-blue-600">
           <li class="mr-6 text-white text-2xl flex">
@@ -17,8 +25,9 @@
           </li>
         </ul>
 
-        <form method="post">
+        <form method="post" id="todo_form">
             @csrf
+            <input type="hidden" name="select_todo_id" id="select_todo_id" value="" />
             <div class="w-3/5 flex mb-10 m-auto">
                 <input type="text" name="content" placeholder="TODOを入力する" class="flex-auto w-32 py-2 px-2 rounded-md border-blue-500 hover:border-blue-700 ring-2 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500" />
                 <button formaction="{{ route('todo.add') }}" class="cursor-pointer ml-5 shadow-md rounded-md font-semibold text-white text-base bg-blue-500 hover:bg-blue-700 ring-2">
@@ -29,11 +38,13 @@
             </div>
             <ul class="w-4/5 m-auto">
                 @foreach($todos as $todo)
-                <li class="block py-3 border-b-2 border-gray-200 flex justify-between">
+                <li class="block py-3 border-b-2 border-gray-200 {{ $todo->check ? 'bg-gray-300' : '' }} flex justify-between">
                     <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer ml-3 h-8 w-8 mr-3 py-1 shadow-md rounded-md font-semibold text-white text-base bg-gray-500 hover:bg-gray-700 ring-gray-200 ring-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
+                        <button type="button" onclick="checkTodo({{ $todo->id }})" class="cursor-pointer ml-3 mr-3 px-1 py-1 shadow-md rounded-md font-semibold text-white text-base {{ $todo->check ? 'bg-green-500 hover:bg-green-700 ring-green-200' : 'bg-gray-500 hover:bg-gray-700 ring-gray-200' }} ring-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
                         <span class="text-2xl">
                             {{ $todo->content }}
                         </span>

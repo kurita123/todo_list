@@ -22,6 +22,16 @@ class TodoController extends Controller
     }
 
     public function check(Request $request) {
+        $todo = Todo::find($request->select_todo_id);
+
+        if ($todo->check) {
+            $todo->check = false;
+        } else {
+            $todo->check = true;
+        }
+
+        $todo->save();
+        return redirect()->route('todo.init');
     }
 
     public function delete(Request $request) {
