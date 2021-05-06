@@ -35,5 +35,7 @@ class TodoController extends Controller
     }
 
     public function delete(Request $request) {
+        Todo::find($request->select_todo_id)->delete();
+        return redirect()->route('todo.init');
     }
 }
