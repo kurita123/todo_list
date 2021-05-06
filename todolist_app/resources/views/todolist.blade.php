@@ -28,45 +28,21 @@
                 </button>
             </div>
             <ul class="w-4/5 m-auto">
+                @foreach($todos as $todo)
                 <li class="block py-3 border-b-2 border-gray-200 flex justify-between">
                     <div class="flex">
                         <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer ml-3 h-8 w-8 mr-3 py-1 shadow-md rounded-md font-semibold text-white text-base bg-gray-500 hover:bg-gray-700 ring-gray-200 ring-2" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
                         <span class="text-2xl">
-                            todo1
+                            {{ $todo->content }}
                         </span>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer mr-3 h-8 w-8 py-1 shadow-md rounded-md font-semibold text-white text-base bg-red-500 hover:bg-red-700 ring-2 ring-red-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                 </li>
-                <li class="block py-3 border-b-2 border-gray-200 flex justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer ml-3 h-8 w-8 mr-3 py-1 shadow-md rounded-md font-semibold text-white text-base bg-gray-500 hover:bg-gray-700 ring-gray-200 ring-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-2xl">
-                            todo2
-                        </span>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer mr-3 h-8 w-8 py-1 shadow-md rounded-md font-semibold text-white text-base bg-red-500 hover:bg-red-700 ring-2 ring-red-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                </li>
-                <li class="block py-3 border-b-2 border-gray-200 bg-gray-300 flex justify-between">
-                    <div class="flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer ml-3 h-8 w-8 mr-3 py-1 shadow-md rounded-md font-semibold text-white text-base bg-green-500 hover:bg-green-700 ring-green-200 ring-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-2xl">
-                            todo3
-                        </span>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer mr-3 h-8 w-8 py-1 shadow-md rounded-md font-semibold text-white text-base bg-red-500 hover:bg-red-700 ring-2 ring-red-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                </li>
+                @endforeach
             </ul>
         </form>
     </body>

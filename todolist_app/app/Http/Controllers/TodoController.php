@@ -8,7 +8,9 @@ use App\Models\Todo;
 class TodoController extends Controller
 {
     public function index() {
-        return view('todolist');
+        $todos = Todo::orderBy('created_at', 'desc')->get();
+
+        return view('todolist', ['todos' => $todos]);
     }
 
     public function add(Request $request) {
