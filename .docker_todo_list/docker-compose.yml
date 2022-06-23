@@ -33,7 +33,20 @@ services:
       - db
     ports:
       - 8086:80
-
+#  db:
+#    image: mysql:5.7
+#    container_name: todo_list_laravel_mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: todolist
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: root
+#      TZ: 'Asia/Tokyo'
+#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+#    volumes:
+#      - ./docker/db/data:/var/lib/mysql
+#    ports:
+#      - 3306:3306
   db:
     image: mysql:5.7
     container_name: todo_list_laravel_mysql

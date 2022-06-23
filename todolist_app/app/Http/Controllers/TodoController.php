@@ -3,43 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Todo;
+use App\Models\TodoModel;
 
 class TodoController extends Controller
 {
-    public function index() {
-        $todos = Todo::orderBy('created_at', 'desc')->get();
-
-        return view('todolist', ['todos' => $todos]);
+    function index(){
+        $todos = TodoModel::all();
+        return view('index', ['todos' => $todos]);
     }
 
-    public function add(Request $request) {
-        $request->validate([
-            'content' => 'required|min:3|max:100'
-        ]);
-
-        Todo::create([
-            'content' => $request->content
-        ]);
-
-        return redirect()->route('todo.init');
-    }
-
-    public function check(Request $request) {
-        $todo = Todo::find($request->select_todo_id);
-
-        if ($todo->check) {
-            $todo->check = false;
-        } else {
-            $todo->check = true;
-        }
-
+    function addTodo( Request $request )
+    {
+        $todo = new TodoModel();
+        $todo->text = $request->text;
         $todo->save();
-        return redirect()->route('todo.init');
+        return redirect('/todos');
     }
 
-    public function delete(Request $request) {
-        Todo::find($request->select_todo_id)->delete();
-        return redirect()->route('todo.init');
+    function deleteTodo( $id )
+    {
+        $todo = TodoModel::find( $id );
+        $todo->delete();
+        return redirect('/todos');
     }
+
 }

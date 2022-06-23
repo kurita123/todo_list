@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TodoController::class, 'index'])->name('todo.init');
-Route::post('/add', [TodoController::class, 'add'])->name('todo.add');
-Route::post('/check', [TodoController::class, 'check'])->name('todo.check');
-Route::post('/delete', [TodoController::class, 'delete'])->name('todo.delete');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Route::get('/',function(){
+//    return view('todolist');
+//});
+
+Route::get('/', [TodoController::class, 'index']);
+Route::get('/todos', [TodoController::class, 'index']);
+Route::post('/todos', [TodoController::class, 'addTodo']);
+Route::delete('/todos/{id}', [TodoController::class, 'deleteTodo']);

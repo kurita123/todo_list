@@ -16,10 +16,10 @@
         <ul>
             @foreach ($todos as $todo)
                 <li>
-                    {{ $todo->text }}
+                    {{ $todo->contetns }}
                     <form action="/todos/{{ $todo->id }}"
-                        style="display: inline;"
-                        method="POST">
+                          style="display: inline;"
+                          method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">DEL</button>
