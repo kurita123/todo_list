@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('todo_models', function (Blueprint $table) {
+        Schema::create('todo', function (Blueprint $table) {
             $table->id();
-            $table->string('text');
+            $table->text('comment')->comment('コメント');
+            $table->tinyInteger('complete')->comment('完了');
+            $table->tinyInteger('hold')->comment('保留');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todo_models');
+        Schema::dropIfExists('todo');
     }
 };
