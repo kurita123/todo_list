@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('todo', function (Blueprint $table) {
+        Schema::table('todos', function (Blueprint $table) {
             //
             $table->tinyInteger('delete_flag')->comment('論理削除');
         });

@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TodoModel;
+use App\Models\Todo;
 
 class TodoController extends Controller
 {
-    function index(){
-        $todos = TodoModel::all();
-        return view('index', ['todos' => $todos]);
+    public function index(){
+
+//        $aTodo = Todo::all();
+
+        $mTodo = new Todo();
+        $aTodos = $mTodo->getTodo();
+//        var_dump($aTodos);exit;
+        return view('todo/index')->with('todos',$aTodos);
     }
 
     function addTodo( Request $request )
     {
-        $todo = new TodoModel();
+        $todo = new Todo();
         $todo->text = $request->text;
         $todo->save();
         return redirect('/todos');
@@ -22,7 +27,7 @@ class TodoController extends Controller
 
     function deleteTodo( $id )
     {
-        $todo = TodoModel::find( $id );
+        $todo = Todo::find( $id );
         $todo->delete();
         return redirect('/todos');
     }

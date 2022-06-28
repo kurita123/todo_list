@@ -14,10 +14,10 @@
 
         <h5>Todo List</h5>
         <ul>
-            @foreach ($todos as $todo)
+            @foreach ($todos as $key => $todo)
                 <li>
-                    {{ $todo->contetns }}
-                    <form action="/todos/{{ $todo->id }}"
+                    {{ $todo[ "comment" ] }}
+                    <form action="/todos/{{ $todo[ "id" ] }}"
                           style="display: inline;"
                           method="POST">
                         @csrf

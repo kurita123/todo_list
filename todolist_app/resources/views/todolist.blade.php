@@ -16,8 +16,8 @@
         <ul>
             @foreach ($todos as $todo)
                 <li>
-                    {{ $todo->text }}
-                    <form action="/todos/{{ $todo->id }}"
+                    {{ $todo[ "comment" ] }}
+                    <form action="/todos/{{ $todo[ "id" ] }}"
                         style="display: inline;"
                         method="POST">
                         @csrf
