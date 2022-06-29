@@ -5,7 +5,7 @@
         <title>My Todo</title>
     </head>
     <body>
-        <h3>My Todo</h3>
+        <h3 class="title">My Todo</h3>
         <form action="/todos" method="POST">
             @csrf
             <input name="text" placeholder="Input here...">

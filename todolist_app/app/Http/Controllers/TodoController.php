@@ -20,7 +20,7 @@ class TodoController extends Controller
     function addTodo( Request $request )
     {
         $todo = new Todo();
-        $todo->text = $request->text;
+        $todo->title = $request->todo_title;
         $todo->save();
         return redirect('/todos');
     }

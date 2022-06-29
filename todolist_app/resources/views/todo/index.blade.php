@@ -3,20 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>My Todo</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
-        <h3>My Todo</h3>
+        <h3 class="title">Todoリスト 入力ページ</h3>
         <form action="/todos" method="POST">
             @csrf
-            <input name="text" placeholder="Input here...">
-            <button type="submit">ADD</button>
+            <div class="input-title">
+                <p>タイトル</p>
+                <input type="text" name="todo_title" placeholder="例)◯日のタスク" required>
+            </div>
+            <button type="submit">送信</button>
         </form>
 
         <h5>Todo List</h5>
         <ul>
             @foreach ($todos as $key => $todo)
-                <li>
-                    {{ $todo[ "comment" ] }}
+                <li class="todo_list">
+                    <p class="todo_comment">
+                        {{ $todo[ "comment" ] }}
+                    </p>
                     <form action="/todos/{{ $todo[ "id" ] }}"
                           style="display: inline;"
                           method="POST">

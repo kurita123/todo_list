@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->text('title');
             $table->text('comment')->comment('コメント');
             $table->tinyInteger('complete')->comment('完了');
             $table->tinyInteger('hold')->comment('保留');
