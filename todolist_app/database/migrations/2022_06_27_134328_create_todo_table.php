@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('comment')->comment('コメント');
-            $table->tinyInteger('complete')->comment('完了');
-            $table->tinyInteger('hold')->comment('保留');
+            $table->string('title',20);
+            $table->string('comment',300)->comment('コメント');
+            $table->tinyInteger('complete')->nullable()->default(0)->comment('完了');
+            $table->tinyInteger('hold')->nullable()->default(0)->comment('保留');
             $table->timestamps();
         });
     }

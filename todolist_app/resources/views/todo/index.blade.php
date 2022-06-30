@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
-        <h3 class="title">Todoリスト 入力ページ</h3>
+        <h3 class="title">Todoリスト</h3>
         <form action="/todos" method="POST">
             @csrf
             <div class="input-title">

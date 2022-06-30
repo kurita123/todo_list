@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\EditTodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::get('/', [TodoController::class, 'index']);
 Route::get('/todos', [TodoController::class, 'index']);
 Route::post('/todos', [TodoController::class, 'addTodo']);
 Route::delete('/todos/{id}', [TodoController::class, 'deleteTodo']);
+
+Route::get('/edit/todo', [EditTodoController::class, 'index']);
+Route::post('/edit/todo', [EditTodoController::class, 'addTodo']);

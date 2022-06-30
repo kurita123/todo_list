@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('todos', function (Blueprint $table) {
             //
-            $table->tinyInteger('delete_flag')->comment('論理削除');
+            $table->softDeletes('deleted_at',0)->comment('論理削除');
         });
     }
 
