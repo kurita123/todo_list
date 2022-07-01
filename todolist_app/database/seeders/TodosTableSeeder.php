@@ -16,7 +16,7 @@ class TodosTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
         $aTodoInfo = array(
             array(
                 "title" => "プライベート",

@@ -28,5 +28,5 @@ Route::get('/todos', [TodoController::class, 'index']);
 Route::post('/todos', [TodoController::class, 'addTodo']);
 Route::delete('/todos/{id}', [TodoController::class, 'deleteTodo']);
 
-Route::get('/edit/todo', [EditTodoController::class, 'index']);
-Route::post('/edit/todo', [EditTodoController::class, 'addTodo']);
+Route::get('/edit/todo/default', [EditTodoController::class, 'index']);
+Route::post('/edit/todo/register', [EditTodoController::class, 'addTodo']);

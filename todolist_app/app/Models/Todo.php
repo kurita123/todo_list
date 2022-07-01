@@ -10,6 +10,11 @@ class Todo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'comment',
+    ];
+
     protected $_name ="todos";
 
     public $aColumns = array(
@@ -21,10 +26,11 @@ class Todo extends Model
         "t.`updated_at`",
     );
 
+    //削除済み以外のリストを取得
     public function getTodo(){
 
         $aWhere = array();
-        $aWhere[] = "t.`delete_flag` = 0";
+        $aWhere[] = "t.`deleted_at` = NULL";
 
         $sSql = ""
             . "SELECT \n"
@@ -43,5 +49,33 @@ class Todo extends Model
         }
 
         return $aResult;
+    }
+
+    //Todo新規登録
+    public function registerTodo( $hParameter ){
+
+        $sTitle = array_key_exists("title",$hParameter ) && isset( $hParameter[ "title" ] ) ? $hParameter[ "title" ] : NULL;
+        $sComment = array_key_exists("comment",$hParameter ) && isset( $hParameter[ "comment" ] ) ? $hParameter[ "comment" ] : NULL;
+
+        if( !isset( $sTitle ) && !isset( $sComment ) ){
+            return array();
+        }
+
+        try{
+            DB::beginTransaction();
+
+            $insertCount = $this->create([
+                'title' => $sTitle,
+                'comment' => $sComment,
+            ]);
+
+            DB::commit();
+
+        }catch ( \Throwable $e ){
+            DB::rollBack();
+        }
+
+        return true;
+
     }
 }
