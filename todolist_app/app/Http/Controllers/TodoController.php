@@ -11,9 +11,9 @@ class TodoController extends Controller
 
 //        $aTodo = Todo::all();
 
-        $mTodo = new Todo();
-        $aTodos = $mTodo->getTodo();
-//        var_dump($aTodos);exit;
+        $oTodo = new Todo();
+        $aTodos = $oTodo->getTodo();
+
         return view('todo/index')->with('todos',$aTodos);
     }
 

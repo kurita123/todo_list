@@ -1,11 +1,13 @@
 body {
   background-color: #f9fff2; }
 
-.todo_list {
-  float: left;
-  margin: 3px 10px 0 0; }
-  .todo_list .todo_comment {
-    font-size: 20px; }
+.todo_list_vertical {
+  display: flex; }
+  .todo_list_vertical .todo_list {
+    float: left;
+    margin: 3px 10px 0 0; }
+    .todo_list_vertical .todo_list .todo_comment {
+      font-size: 20px; }
 
 .mgTop05 {
   margin-top: 5px; }
@@ -18,5 +20,3 @@ body {
 
 .pgTop10 {
   padding-top: 10px; }
-
-/*# sourceMappingURL=style.css.map */

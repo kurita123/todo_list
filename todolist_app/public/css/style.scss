@@ -3,12 +3,14 @@
 body {
   background-color: #f9fff2;
 }
-
-.todo_list{
-  float:left;
-  margin:3px 10px 0 0;
-  .todo_comment{
-    font-size:20px
+.todo_list_vertical{
+  display:flex;
+  .todo_list{
+    float:left;
+    margin:3px 10px 0 0;
+    .todo_comment{
+      font-size:20px
+    }
   }
 }
 
@@ -27,3 +29,4 @@ body {
 .pgTop10{
   padding-top: 10px;
 }
+

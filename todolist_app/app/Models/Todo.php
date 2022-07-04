@@ -19,10 +19,10 @@ class Todo extends Model
 
     public $aColumns = array(
         "t.`id`",
+        "t.`title`",
         "t.`comment`",
         "t.`complete`",
         "t.`hold`",
-        "t.`created_at`",
         "t.`updated_at`",
     );
 
@@ -30,7 +30,7 @@ class Todo extends Model
     public function getTodo(){
 
         $aWhere = array();
-        $aWhere[] = "t.`deleted_at` = NULL";
+        $aWhere[] = "t.`deleted_at` IS NULL";
 
         $sSql = ""
             . "SELECT \n"
@@ -42,7 +42,7 @@ class Todo extends Model
 
         $aResult = DB::select( $sSql );
 
-        $aResult = isset( $aResult ) && is_array( $aResult ) && count( $aResult ) > 0 ? json_decode( json_encode( $aResult ), true ) : NULL;
+        $aResult = isset( $aResult ) && is_array( $aResult ) ? json_decode( json_encode( $aResult ), true ) : NULL;
 
         if( !isset( $aResult ) ){
            return array();
