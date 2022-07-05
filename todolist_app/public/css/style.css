@@ -20,3 +20,21 @@ body {
 
 .pgTop10 {
   padding-top: 10px; }
+
+.btn a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #cccccc;
+  box-shadow: 5px 5px 0 #3d9ec8;
+  transition: 0.3s; }
+  .btn a:hover {
+    text-decoration: none;
+    background-color: #a0c4d3;
+    box-shadow: 0 0 0; }

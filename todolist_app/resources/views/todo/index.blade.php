@@ -19,7 +19,9 @@
                         <form action="/todos/{{ $todo[ "id" ] }}" style="display: inline;" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">DEL</button>
+                            <div class="btn">
+                                <a href="">DEL</a>
+                            </div>
                         </form>
                     </li>
                 @endforeach
