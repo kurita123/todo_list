@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\EditTodoController;
 
@@ -23,7 +24,7 @@ use App\Http\Controllers\EditTodoController;
 //    return view('todolist');
 //});
 
-Route::get('/', [TodoController::class, 'index']);
+Route::get('/', [TopController::class, 'index']);
 Route::get('/todos', [TodoController::class, 'index']);
 Route::post('/todos', [TodoController::class, 'addTodo']);
 Route::delete('/todos/{id}', [TodoController::class, 'deleteTodo']);
